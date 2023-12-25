@@ -1,0 +1,25 @@
+syntax = "proto3";
+option go_package = "user-service/service";
+
+// 服务和方法
+service Users {
+    rpc GetUser (UserGetRequest) returns (UserGetReply) {}
+}
+
+// 请求消息
+message UserGetRequest {
+    string email = 1;
+    int32 id = 2;
+}
+
+// 响应消息
+message User {
+    string id = 1;
+    string first_name = 2;
+    string last_name = 3;
+    int32 age = 4;
+}
+
+message UserGetReply {
+    User user = 1; // 嵌套
+}
